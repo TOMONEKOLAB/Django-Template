@@ -11,6 +11,7 @@ case $CONTAINER in
         if [ ! -f /workspaces/manage.py ]; then
             echo "Creating new Django project..."
             django-admin startproject config .
+            exec python manage.py runserver 0.0.0.0:8080
         else
             echo "Starting Django Project..."
             if [ "$DEBUG" = "True" ]; then
