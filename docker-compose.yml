@@ -1,0 +1,81 @@
+services:
+
+  app:
+    container_name: django-app
+    image: django-app
+    build:
+      context: .
+      dockerfile: .devcontainer/app/Dockerfile
+    platform: linux/x86_64
+    volumes:
+      - ./app:/workspaces
+      - ./app/static:/workspaces/static
+    tty: true
+    expose:
+      - 8080
+    ports:
+      - "8000:8000"
+    environment:
+      - CONTAINER=Django-app
+      - DEBUG=True
+    env_file:
+      - .env
+    networks:
+      - frontend
+      - backend
+    depends_on:
+      db:
+        condition: service_healthy
+    command: sh -c "/opt/entrypoint.sh"
+
+  web:
+    container_name: django-web
+    image: django-web
+    build:
+      context: .
+      dockerfile: .devcontainer/web/Dockerfile
+    platform: linux/x86_64
+    volumes:
+      - ./app/static:/workspaces/static
+    tty: true
+    ports:
+      - "80:80"
+    environment:
+      - CONTAINER=Django-web
+      - DEBUG=True
+    env_file:
+      - .env
+    networks:
+      - frontend
+    depends_on:
+      - app
+    command: sh -c "/opt/entrypoint.sh"
+
+  db:
+    container_name: django-db
+    image: django-db
+    build:
+      context: .
+      dockerfile: .devcontainer/db/Dockerfile
+    platform: linux/x86_64
+    volumes:
+      - ./db:/workspaces
+    tty: true
+    environment:
+      - CONTAINER=Django-db
+    env_file:
+      - .env
+    networks:
+      - backend
+    command: sh -c "/opt/entrypoint.sh"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
+networks:
+  frontend:
+    name: frontend
+  backend:
+    name: backend

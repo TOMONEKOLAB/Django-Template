@@ -1,0 +1,6 @@
+{
+    "name": "Django-web | Nginx",
+    "dockerComposeFile": "../../docker-compose.yml",
+    "service": "web",
+    "workspaceFolder": "/"
+}

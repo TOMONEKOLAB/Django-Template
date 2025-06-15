@@ -1,0 +1,21 @@
+{
+    "name": "Django-app | Python & Node.js",
+    "dockerComposeFile": "../../docker-compose.yml",
+    "service": "app",
+    "runServices": [
+        "app",
+        "db",
+        "web"
+    ],
+    "workspaceFolder": "/workspaces",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "donjayamanne.python-extension-pack",
+                "ms-vscode.hexeditor",
+                "oderwat.indent-rainbow",
+                "ecmel.vscode-html-css"
+            ]
+        }
+    }
+}
