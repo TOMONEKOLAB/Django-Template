@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import environ
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,7 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-wpbc-6r#=2bs69gjs=1t_p+^s(ear0ulqj1fsg800+))a#l2zo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ['DEBUG']
+env = environ.Env()
+environ.Env.read_env()
+
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = []
 

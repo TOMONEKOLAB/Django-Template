@@ -1,4 +1,5 @@
 django
+django-environ
 gunicorn
 python-dotenv
 psycopg2-binary
