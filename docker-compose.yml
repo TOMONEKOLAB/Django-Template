@@ -1,7 +1,7 @@
 services:
 
   app:
-    container_name: django-app
+    container_name: portfolio-app
     image: django-app
     build:
       context: .
@@ -14,12 +14,13 @@ services:
     expose:
       - 8080
     ports:
-      - "8000:8080"
+      - "8000:8000"
     environment:
       - CONTAINER=Django-app
-      - DEBUG=True
-    env_file:
-      - .env
+      - DEBUG=${DEBUG}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     networks:
       - frontend
       - backend
@@ -29,7 +30,7 @@ services:
     command: sh -c "/opt/entrypoint.sh"
 
   web:
-    container_name: django-web
+    container_name: portfolio-web
     image: django-web
     build:
       context: .
@@ -42,9 +43,7 @@ services:
       - "80:80"
     environment:
       - CONTAINER=Django-web
-      - DEBUG=True
-    env_file:
-      - .env
+      - DEBUG=${DEBUG}
     networks:
       - frontend
     depends_on:
@@ -52,7 +51,7 @@ services:
     command: sh -c "/opt/entrypoint.sh"
 
   db:
-    container_name: django-db
+    container_name: portfolio-db
     image: django-db
     build:
       context: .
@@ -63,8 +62,11 @@ services:
     tty: true
     environment:
       - CONTAINER=Django-db
-    env_file:
-      - .env
+      - DEBUG=${DEBUG}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - PGDATA=${PGDATA}
     networks:
       - backend
     command: sh -c "/opt/entrypoint.sh"

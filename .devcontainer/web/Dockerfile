@@ -1,5 +1,10 @@
 FROM ubuntu:24.04
 
+# Environment 
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=ja_JP.UTF-8
+ENV LC_ALL=ja_JP.UTF-8
+
 WORKDIR /workspaces
 
 # Install tools & fonts

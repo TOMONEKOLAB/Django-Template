@@ -15,7 +15,7 @@ case $CONTAINER in
         else
             echo "Starting Django Project..."
             if [ "$DEBUG" = "True" ]; then
-                exec python manage.py runserver 0.0.0.0:8080
+                exec python manage.py runserver 0.0.0.0:8000
             else
                 exec gunicorn config.wsgi:application --bind 0.0.0.0:8080
             fi

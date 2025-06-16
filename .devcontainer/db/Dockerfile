@@ -5,6 +5,9 @@ ARG POSTGRE_VERSION=17
 
 # Environment 
 ENV PATH="/usr/lib/postgresql/${POSTGRE_VERSION}/bin:${PATH}"
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=ja_JP.UTF-8
+ENV LC_ALL=ja_JP.UTF-8
 
 WORKDIR /workspaces
 

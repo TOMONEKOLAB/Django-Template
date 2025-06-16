@@ -6,6 +6,8 @@ ARG NODE_VERSION=22.15.0
 
 # Environment
 ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=ja_JP.UTF-8
+ENV LC_ALL=ja_JP.UTF-8
 
 WORKDIR /workspaces
 
