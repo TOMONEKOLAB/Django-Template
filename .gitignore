@@ -1,4 +1,35 @@
-.env
+# Python cache
 __pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Logs
+*.log
+
+# Env files
+.env
+.env.*
+
+# Node.js
+node_modules/
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+.devcontainer/.env
+
+# Static and media files
+/static/*
+!/static/.gitkeep
+/media/*
+!/media/.gitkeep
+
+# Database files
 db/*
-!.gitkeep
+!db/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
