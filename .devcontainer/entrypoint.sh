@@ -31,6 +31,7 @@ case $CONTAINER in
             echo "host    all             all             0.0.0.0/0               trust" >> /workspaces/pg_hba.conf
         fi
         echo "Starting PostgreSQL..."
+        touch .gitkeep
         exec su - postgres -c "/usr/lib/postgresql/17/bin/postgres -D /workspaces"
         ;;
     Django-web)
