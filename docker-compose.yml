@@ -1,7 +1,7 @@
 services:
 
   app:
-    container_name: your-app-name
+    container_name: dev-manager-app
     image: django-app
     build:
       context: .
@@ -24,16 +24,28 @@ services:
       - POSTGRES_HOST=${POSTGRES_HOST}
       - ALLOWED_HOSTS=${ALLOWED_HOSTS}
       - SECRET_KEY=${SECRET_KEY}
+    develop:
+      watch:
+        - action: sync
+          path: ./app
+          target: /workspaces
+          ignore:
+            - "**/node_modules/**"
+            - "**/__pycache__/**"
+        - action: rebuild
+          path: 
+          - ./app/requirements.txt
+          - ./app/package.json
     networks:
       - frontend
       - backend
     depends_on:
       db:
         condition: service_healthy
-    command: sh -c "/opt/entrypoint.sh"
+    # command: sh -c "/opt/entrypoint.sh"
 
   web:
-    container_name: your-web-name
+    container_name: dev-manager-web
     image: django-web
     build:
       context: .
@@ -54,7 +66,7 @@ services:
     command: sh -c "/opt/entrypoint.sh"
 
   db:
-    container_name: your-db-name
+    container_name: dev-manager-db
     image: django-db
     build:
       context: .
