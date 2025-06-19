@@ -19,6 +19,8 @@ Recommended
 Please refer to .env.sample.  
 The contents are as follows.
 
+<details>
+  
 ```
 #-------------------------------------
 # PostgreSQL
@@ -48,6 +50,7 @@ DEBIAN_FRONTEND=noninteractive
 LANG=ja_JP.UTF-8
 LC_ALL=ja_JP.UTF-8
 ```
+</details>
 
 ### Things you must change
 
@@ -76,6 +79,8 @@ You are free to change these, but if you change other environment variables, ple
 
 If you create environments multiple times in different projects without making any changes to this template, an error will be thrown saying that the container names are the same.  
 Therefore, change the container names as needed.
+
+<details>
 
 ```
 services:
@@ -162,6 +167,7 @@ networks:
   backend:
     name: backend
 ```
+</details>
 
 Change the container_name property in each service.  
 Also, if you want to start the Django app as is, uncomment the command property in the app service.
@@ -192,10 +198,12 @@ Make changes as needed.
 .env.sampleを参考にしてください．  
 内容は以下です．
 
+<details>
+  
 ```
-# -------------------------------------
+#-------------------------------------
 # PostgreSQL
-# -------------------------------------
+#-------------------------------------
 POSTGRES_USER=postgres
 POSTGRES_PASSWORD=postgres
 POSTGRES_DB=postgres
@@ -205,15 +213,15 @@ PGDATA=/workspaces
 # Optional: Full connection string (used by dj_database_url)
 # DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
 
-# -------------------------------------
+#-------------------------------------
 # Django
-# -------------------------------------
+#-------------------------------------
 DEBUG=True
 # Comma-separated list of allowed hosts
 ALLOWED_HOSTS=localhost,127.0.0.1
 SECRET_KEY=your-secret-key
 
-# -------------------------------------
+#-------------------------------------
 # Locale settings
 # (Make sure ja_JP.UTF-8 is available in your base image)
 # -------------------------------------
@@ -221,6 +229,7 @@ DEBIAN_FRONTEND=noninteractive
 LANG=ja_JP.UTF-8
 LC_ALL=ja_JP.UTF-8
 ```
+</details>
 
 ### 必ず変更するもの
 
@@ -250,6 +259,8 @@ ALLOWED_HOSTS=localhost,127.0.0.1
 このテンプレートを何も変更を加えずに違うプロジェクトで複数回環境を作成すると，コンテナ名が同じといわれてエラーを吐きます．  
 なので，必要に応じてコンテナの名前を変更してください．  
 
+<details>
+  
 ```
 services:
 
@@ -335,6 +346,7 @@ networks:
   backend:
     name: backend
 ```
+</details>
 
 各サービスにあるcontainer_nameプロパティを変更してください．  
 また，起動してそのままDjangoのアプリを起動したい場合はappサービスの中にあるcommandプロパティのコメントアウトを外してください．
