@@ -26,6 +26,8 @@ case $CONTAINER in
         if [ ! -s "/workspaces/PG_VERSION" ]; then
             echo "Initializing PostgreSQL database..."
             su - postgres -c "/usr/lib/postgresql/17/bin/initdb -D /workspaces"
+            su - postgres -c "/usr/lib/postgresql/17/bin/pg_ctl -D /workspaces -w start"
+            su - postgres -c "createdb $POSTGRES_DB"
             echo "listen_addresses = '*'" >> /workspaces/postgresql.conf
             echo "port = 5432" >> /workspaces/postgresql.conf
             echo "host    all             all             0.0.0.0/0               trust" >> /workspaces/pg_hba.conf
