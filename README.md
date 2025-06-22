@@ -177,6 +177,33 @@ Also, if you want to start the Django app as is, uncomment the command property 
 Located in app/requirements.txt.  
 Make changes as needed.
 
+## How to start
+
+If you are using Dev Container etc. and want to start it from within, please do the following.
+
+- If DEBUG=True
+```shell
+python manage.py runserver 0.0.0.0:8000
+```
+
+- If DEBUG=False
+```shell
+python manage.py runserver 0.0.0.0:8080
+```
+
+If you are not using Dev Conatiner etc., start it with docker-compose and it will be published.
+The published location is as follows.
+
+- If DEBUG=True
+```shell
+localhost:8000
+```
+
+- If DEBUG=False
+```shell
+localhost:80
+```
+
 # 日本語
 # Djangoテンプレート
 
@@ -355,3 +382,30 @@ networks:
 
 app/requirements.txtにあります．  
 必要に応じて変更を加えてください．
+
+## 起動方法
+
+Dev Container等を使用して，中から起動する場合は，以下の通りにしてください．
+
+- DEBUG=Trueの場合
+```shell
+python manage.py runserver 0.0.0.0:8000
+```
+
+- DEBUG=Falseの場合
+```shell
+python manage.py runserver 0.0.0.0:8080
+```
+
+Dev Conatiner等を使用しない場合は，docker-composeで起動してもらえば公開されます．  
+公開される場所は以下の通りです．
+
+- DEBUG=Trueの場合
+```shell
+localhost:8000
+```
+
+- DEBUG=Falseの場合
+```shell
+localhost:80
+```
