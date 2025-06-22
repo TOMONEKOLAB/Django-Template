@@ -33,11 +33,13 @@ services:
             - "**/node_modules/**"
             - "**/__pycache__/**"
         - action: rebuild
-          path: 
-          - ./app/requirements.txt
-          - ./app/package.json
-          - docker-compose.yml
-          - .env
+          path:  ./app/requirements.txt
+        - action: rebuild
+          path:  ./app/package.json
+        - action: rebuild
+          path:  docker-compose.yml
+        - action: rebuild
+          path:  .env
     networks:
       - frontend
       - backend
@@ -64,9 +66,9 @@ services:
     develop:
       watch:
         - action: rebuild
-          path: 
-          - docker-compose.yml
-          - .env
+          path:  docker-compose.yml
+        - action: rebuild
+          path:  .env
     networks:
       - frontend
     depends_on:
@@ -93,9 +95,9 @@ services:
     develop:
       watch:
         - action: rebuild
-          path: 
-          - docker-compose.yml
-          - .env
+          path:  docker-compose.yml
+        - action: rebuild
+          path:  .env
     networks:
       - backend
     command: sh -c "/opt/entrypoint.sh"
