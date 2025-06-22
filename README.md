@@ -41,7 +41,6 @@ DEBUG=True
 # Comma-separated list of allowed hosts
 ALLOWED_HOSTS=localhost,127.0.0.1
 SECRET_KEY=your-secret-key
-
 #-------------------------------------
 # Locale settings
 # (Make sure ja_JP.UTF-8 is available in your base image)
@@ -70,7 +69,6 @@ True is a development environment, False is a production environment.
 POSTGRES_DB=postgres
 DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
 ALLOWED_HOSTS=localhost,127.0.0.1
-
 ```
 
 You are free to change these, but if you change other environment variables, please do so at your own risk.  
@@ -247,7 +245,6 @@ DEBUG=True
 # Comma-separated list of allowed hosts
 ALLOWED_HOSTS=localhost,127.0.0.1
 SECRET_KEY=your-secret-key
-
 #-------------------------------------
 # Locale settings
 # (Make sure ja_JP.UTF-8 is available in your base image)
@@ -276,7 +273,6 @@ Trueで開発環境，Falseで本番環境です．
 POSTGRES_DB=postgres
 DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres
 ALLOWED_HOSTS=localhost,127.0.0.1
-
 ```
 
 は自由に変えてもらっても構いませんが，他の環境変数を変える場合，ご自身で責任をもって変更をお願いします．
