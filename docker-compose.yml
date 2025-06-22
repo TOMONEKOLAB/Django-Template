@@ -1,7 +1,7 @@
 services:
 
   app:
-    container_name: dev-manager-app
+    container_name: your-django-app-name
     image: django-app
     build:
       context: .
@@ -47,7 +47,7 @@ services:
     # command: sh -c "/opt/entrypoint.sh"
 
   web:
-    container_name: dev-manager-web
+    container_name: your-django-web-name
     image: django-web
     build:
       context: .
@@ -74,7 +74,7 @@ services:
     command: sh -c "/opt/entrypoint.sh"
 
   db:
-    container_name: dev-manager-db
+    container_name: your-django-db-name
     image: django-db
     build:
       context: .
