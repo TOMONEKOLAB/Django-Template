@@ -1,7 +1,10 @@
 django
 django-environ
+dj-database-url
+uvicorn
 gunicorn
 python-dotenv
 psycopg2-binary
 djangorestframework
 pillow
+whitenoise[brotli]
